@@ -75,7 +75,7 @@ def login(request):
             user = authenticate(request, username=loginForm.cleaned_data["userName"],password=loginForm.cleaned_data["password"])
             if user is not None:
                 auth_login(request,user)
-                return HttpResponse("logedin")
+                return redirect(order)
             else :
                 return HttpResponse("loginfailed")
 

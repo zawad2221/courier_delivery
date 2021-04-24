@@ -1,0 +1,1 @@
+web: gunicorn parcel_delivery.wsgi

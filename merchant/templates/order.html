@@ -1,0 +1,91 @@
+
+{% load static %}
+<html>
+<head>
+    <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap.css' %}" rel="stylesheet">
+    <script src="bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    
+    <title>Title</title>
+</head>
+<body>
+
+    {% block content %} 
+
+    
+        <form action="" method="post" style="float:left;margin:11px ;width: 47%;border: 3px solid green;padding: 10px;">
+            {% csrf_token %}
+            
+            <div style="width: 100%;border: 3px solid green;padding: 10px;">
+                {% for field in form  %}
+                    <div class="form-floating mb-3">
+                        <b>{{ field.label_tag }}</b> - {{ field }} 
+                    </div>
+                {% endfor %}
+            </br>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <input class="btn btn-primary" type="submit" value="Login">
+            </div>
+            </div>
+
+            <ul class="list-group" style="width: 311px;margin: 22px;border: 3px solid green;padding: 1px;">
+                <li class="list-group-item"><b>Charge Chart</b></li><br>
+                <li class="list-group-item"># Inside of Dhaka:<br>
+500 gm to 2 kg-60/-<br>
+3 kg-70/-<br>
+4 kg-80/-<br>
+5 kg-90/-<br>
+No Cod charge add.<br>No Return charge add.</li>
+                <li class="list-group-item"># Division of Dhaka:<br>
+500 gm to 2 kg-110/-<br>
+3 kg-130/-<br>
+4 kg-150/-<br>
+5 kg-170/-<br>
+1% Cod charge add.<br>
+50% Return charge add.<br>
+</li>
+                <li class="list-group-item"># Outside of Dhaka:<br>
+500 gm to 2 kg-130/-<br>
+3 kg-150/-<br>
+4 kg-170/-<br>
+5 kg-190/-<br>
+1% Cod charge add.<br>
+50% Return charge add.<br>
+</li>
+                
+            </ul>
+            
+        </form>
+        <form style="float:right;margin: ;width: 50%;border: 3px solid green;padding: 10px;">
+            {% csrf_token %}
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Merchant Name</th>
+                    <th scope="col">Product Weight</th>
+                    <th scope="col">Delivery Charge</th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                {% for or in order  %}
+                   <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{or.invoiceId.merchantId.name}}</td>
+                        <td>{{or.weight}}</td>
+                        <td>{{or.charge}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            </br>
+            
+        </form>
+    
+    
+       
+     {% endblock %}
+
+</body>
+</html>

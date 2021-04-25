@@ -62,6 +62,7 @@ def order(request):
             order = Order(deliveryLocation=orderForm.data['deliveryLocation'],productType = orderForm.data['parcelType'], invoiceId=invoice,weight=orderForm.data['weight'],charge=charge)
             order.save()
     orderForm = OrderForm()
+    print(Order.objects.all())
     return render(request,"order.html",{'form':orderForm,'order':Order.objects.all()})
 
 @csrf_exempt

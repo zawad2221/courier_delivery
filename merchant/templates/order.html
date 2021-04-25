@@ -64,6 +64,7 @@ No Cod charge add.<br>No Return charge add.</li>
                     <th scope="col">#</th>
                     <th scope="col">Merchant Name</th>
                     <th scope="col">Product Weight</th>
+                    <th scope="col">Product Type</th>
                     <th scope="col">Delivery Charge</th>
                     </tr>
                 </thead>
@@ -73,6 +74,7 @@ No Cod charge add.<br>No Return charge add.</li>
                    <tr>
                         <th scope="row">{{forloop.counter}}</th>
                         <td>{{or.invoiceId.merchantId.name}}</td>
+                        <td>{{or.productType.typeName}}</td>
                         <td>{{or.weight}}</td>
                         <td>{{or.charge}}</td>
                     </tr>

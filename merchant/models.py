@@ -30,3 +30,4 @@ class Order(models.Model):
     invoiceId = ForeignKey(MerchantInvoice, on_delete= models.CASCADE)
     weight = FloatField()
     charge = FloatField()
+    type = ForeignKey(ProductType, on_delete=models.CASCADE, default=1)

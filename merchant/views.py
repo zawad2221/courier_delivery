@@ -48,6 +48,9 @@ def getCharge(location, weight):
 
 @csrf_exempt
 def order(request):
+    if not request.user.is_authenticated:
+        print("already")
+        return redirect(login)
     if request.method=="POST":
         orderForm = OrderForm(request.POST)
         if orderForm.is_valid():

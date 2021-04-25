@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'parcel_delivery.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd4tpmc5sl510ft',
+        'HOST': 'ec2-54-167-152-185.compute-1.amazonaws.com',
+        'PORT': '5432',
+        'USER': 'hyrndzwtqlefel',
+        'PASSWORD': '284f0b7ee921edab3c42ab6893c3d805e08a654435d878c4d8672200d547dce7',
     }
 }
 

@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.decorators import login_required, permission_required
-from .models import Merchant, MerchantInvoice, Order
+from .models import Merchant, MerchantInvoice, Order, ProductType
 
 def getCharge(location, weight):
     print("locatoin",location," weight ",weight)
@@ -59,7 +59,7 @@ def order(request):
             invoice.save()
             charge = getCharge(orderForm.data['deliveryLocation'],orderForm.data['weight'])
             print("charge:",charge)
-            order = Order(deliveryLocation=orderForm.data['deliveryLocation'],type = orderForm.data['parcelType'], invoiceId=invoice,weight=orderForm.data['weight'],charge=charge)
+            order = Order(deliveryLocation=orderForm.data['deliveryLocation'],type = ProductType.objects.get(id=orderForm.data['parcelType']), invoiceId=invoice,weight=orderForm.data['weight'],charge=charge)
             order.save()
     orderForm = OrderForm()
     print(Order.objects.all())

@@ -16,6 +16,6 @@ class OrderForm(forms.Form):
         (2,'Outside of Dhaka')
     )
     merchent = forms.ModelChoiceField(label='Merchant', queryset=Merchant.objects.all())
-    parcelType= forms.CharField(label='Select Parcel Product Type', widget=forms.Select(choices=PRODUCT_TYPE))
+    parcelType= forms.ModelChoiceField(label='Select Parcel Product Type', queryset=ProductType.objects.all())
     weight = forms.FloatField(label="Weight of the product in gm")
     deliveryLocation= forms.IntegerField(label='Delivery Location', widget=forms.Select(choices=DELIVERY_LOCATION))
